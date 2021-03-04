@@ -70,3 +70,43 @@ public static void main(String[] args){
 
 	}
 }
+
+// =========================================== Using Switch ===============================
+
+
+package problem1;
+
+import java.util.Scanner;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+public class Exam1 {
+
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		System.out.println("Enter the cost of your meal");
+		BigDecimal mealCost = input.nextBigDecimal();
+		System.out.println("Enter your rating (4, 3, or 2)");
+		int rating = input.nextInt();
+
+		BigDecimal tipRate = new BigDecimal(0); // the tip is going to be 0
+
+		switch(rating) {
+		case 4:
+			tipRate = new BigDecimal(0.20);
+			break;
+		case 3:
+			tipRate = new BigDecimal(0.15);
+			break;
+		case 2:
+			tipRate = new BigDecimal(0.1);
+			break;
+		default:
+			break;
+		}
+
+		BigDecimal totalTip = tipRate.multiply(mealCost); // multipy is built in to the BigDecimal
+		System.out.println("Your tip is: " + totalTip.setScale(2, RoundingMode.DOWN)); // setScale in also built in.
+
+		input.close();
+	}
+}
